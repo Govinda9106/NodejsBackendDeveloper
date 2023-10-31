@@ -1,4 +1,4 @@
-import mongoose from './mongoDB/database.js';
+import mongoConnect from './mongoDB/database.js';
 import errorLogger from './errorLog/error.js';
 import router from './src/routes.js';
 import express from 'express';
@@ -13,7 +13,13 @@ const PORT = process.env.PORT || 9000;
 app.use(router);
 app.use(errorLogger);
 
-app.listen(PORT, () => {
-    console.log(`Listening on PORT ${PORT}`);
-})
+async function startServer(){
+    await mongoConnect();
+    app.listen(PORT, () => {
+        console.log(`Listening on PORT ${PORT}`);
+    })
+}
+
+startServer();
+
 
