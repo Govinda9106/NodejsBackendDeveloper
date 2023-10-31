@@ -7,7 +7,7 @@ async function getBookById(req, res, next) {
         if (getBook == null) {
             return res.status(404).json({ message: "Book Details Not Found!" })
         }
-        res.send(getBook);
+        res.status(200).send(getBook);
     } catch (error) {
         next(error);
     }
@@ -56,7 +56,7 @@ async function deleteBookById(req, res, next) {
     try {
         const bookDetails = await Book.findById({ _id: req.params.id });
         if (bookDetails == null) {
-            return res.status(200).json({ message: "Book Already Deleted" });
+            return res.status(404).json({ message: "Book Not Found!!" });
         }
         await Book.findByIdAndDelete({ _id: req.params.id });
         res.status(200).json({ message: "Book Deleted!" })
