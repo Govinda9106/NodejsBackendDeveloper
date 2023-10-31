@@ -3,4 +3,4 @@ function errorLogger(err, req, res, next) {
     res.json({ Error: err.message })
 };
 
-export default errorLogger;
+module.exports =  errorLogger;

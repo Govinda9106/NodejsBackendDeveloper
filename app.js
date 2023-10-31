@@ -1,8 +1,8 @@
-import mongoConnect from './mongoDB/database.js';
-import errorLogger from './errorLog/error.js';
-import router from './src/routes.js';
-import express from 'express';
-import dotenv from 'dotenv';
+const mongoConnect = require('./mongoDB/database.js');
+const errorLogger = require('./errorLog/error.js');
+const router = require('./src/routes.js');
+const express = require('express');
+require('dotenv');
 
 
 const app = express();
@@ -21,5 +21,7 @@ async function startServer(){
 }
 
 startServer();
+
+module.exports =  app;
 
 

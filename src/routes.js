@@ -1,5 +1,5 @@
-import { Router } from "express";
-import controller from './controller.js';
+const { Router } = require('express');
+const controller = require('./controller.js');
 
 const router = Router();
 
@@ -13,4 +13,4 @@ router.put('/books/update/:id', controller.updateBookById);
 
 router.get('/books/delete/:id', controller.deleteBookById);
 
-export default router
+module.exports = router

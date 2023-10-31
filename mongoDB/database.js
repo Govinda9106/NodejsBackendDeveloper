@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 async function mongoConnect() {
     mongoose.connect('mongodb://127.0.0.1:27017/Book', {
@@ -12,4 +12,4 @@ async function mongoConnect() {
     });
 }
 
-export default mongoConnect;
+module.exports = mongoConnect;
