@@ -11,6 +11,6 @@ router.get('/books/:id', controller.getBookById);
 
 router.put('/books/update/:id', controller.updateBookById);
 
-router.get('/books/delete/:id', controller.deleteBookById);
+router.delete('/books/delete/:id', controller.deleteBookById);
 
 module.exports = router
