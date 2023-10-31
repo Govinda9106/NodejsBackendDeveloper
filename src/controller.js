@@ -24,6 +24,12 @@ async function getBookList(req, res, next) {
 
 async function addBooks(req, res, next) {
     try {
+        const bookDetails = await Book.find({});
+        const boolean = await checkAlreadyExist(req, res, bookDetails);
+        console.log(boolean);
+        if (boolean) {
+            return res.json({ message: "Book Already Exist!!" })
+        }
         const book = new Book(req.body);
         await book.save();
         res.json({ status: 201, message: "Book Added!" })
@@ -59,6 +65,14 @@ async function deleteBookById(req, res, next) {
     } catch (error) {
         next(error)
     }
+};
+
+async function checkAlreadyExist(req, res, bookDetails) {
+    const bookArr = bookDetails.filter((books) => {
+        return (books.title == req.body.title && books.author == req.body.author && books.summary == req.body.summary)
+    });
+    if (bookArr.length != 0) return true;
+    return false;
 };
 
 
