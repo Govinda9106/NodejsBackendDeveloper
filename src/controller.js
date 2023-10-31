@@ -26,7 +26,6 @@ async function addBooks(req, res, next) {
     try {
         const bookDetails = await Book.find({});
         const boolean = await checkAlreadyExist(req, res, bookDetails);
-        console.log(boolean);
         if (boolean) {
             return res.json({ message: "Book Already Exist!!" })
         }
